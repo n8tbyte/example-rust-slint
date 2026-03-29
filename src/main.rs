@@ -3,6 +3,10 @@
 slint::include_modules!();
 
 fn main() -> Result<(), slint::PlatformError> {
+    unsafe {
+        std::env::set_var("SLINT_BACKEND", "software");
+    }
+
     let ui = AppWindow::new()?;
 
     let ui_handle = ui.as_weak();
@@ -20,3 +24,4 @@ fn main() -> Result<(), slint::PlatformError> {
 
     ui.run()
 }
+
