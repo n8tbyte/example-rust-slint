@@ -1,0 +1,30 @@
+import { Button, VerticalBox, LineEdit } from "std-widgets.slint";
+
+export component AppWindow inherits Window {
+    width: 400px;
+    height: 200px;
+    title: "Slint Rust UI";
+    in-out property <string> user-name: "Guest";
+    callback say-hello(string);
+    VerticalBox {
+        alignment: center;
+        spacing: 20px;
+        Text {
+            text: "สวัสดี {user-name}";
+            font-size: 24px;
+            horizontal-alignment: center;
+        }
+
+        input := LineEdit {
+            placeholder-text: "พิมพ์ชื่อของคุณที่นี่";
+        }
+
+        Button {
+            text: "คลิกเพื่อทักทาย";
+            primary: true;
+            clicked => {
+                root.say-hello(input.text);
+            }
+        }
+    }
+}
