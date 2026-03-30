@@ -5,6 +5,10 @@ slint::include_modules!();
 fn main() -> Result<(), slint::PlatformError> {
     unsafe {
         std::env::set_var("SLINT_BACKEND", "software");
+        std::env::set_var("SLINT_SCALE_FACTOR", "1");
+        std::env::set_var("SLINT_ANIMATIONS", "0");
+        std::env::set_var("SLINT_DEBUG_PERFORMANCE", "0");
+        std::env::set_var("SLINT_DEBUG_REDRAW", "0"); 
     }
 
     let ui = AppWindow::new()?;
